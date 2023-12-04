@@ -1,6 +1,8 @@
-# _Networking basics #1_
 
-# Resources
+> # _Networking basics #1_
+>
+
+> # Resources
 
 ### Read or watch:
 
@@ -39,11 +41,11 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * Your Bash script must pass Shellcheck (version 0.7.0 via apt-get) without any errors
 * The first line of all your Bash scripts should be exactly #!/usr/bin/env bash
 * The second line of all your Bash scripts should be a comment explaining what is the script doing
+>
 
 # Tasks
 
->
-## 0. Change your home IP
+> ## 0. Change your home IP
 Write a Bash script that configures an Ubuntu server with the below requirements.
 
 Requirements:
@@ -107,8 +109,7 @@ If you’re running this script on a machine that you’ll continue to use, be s
 2 pts
 >
 
->
-## 1. Show attached IPs
+> ## 1. Show attached IPs
 
 Write a Bash script that displays all active IPv4 IPs on the machine it’s executed on.
 
@@ -153,8 +154,7 @@ Note that we can see our `localhost IP` :)
 1 pt
 >
 
->
-## 2. Port listening on localhost
+> ## 2. Port listening on localhost
 
 Write a Bash script that listens on port `98` on `localhost`.
 
