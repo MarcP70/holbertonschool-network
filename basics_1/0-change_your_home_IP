@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Add entries to the hosts file
+
+# Set the desired IP addresses for localhost and facebook.com
+localhost_ip="127.0.0.2"
+facebook_ip="8.8.8.8"
+
+# Update /etc/hosts file
+sed -i "/localhost/ s/.*/$localhost_ip localhost/" /etc/hosts
+sed -i "/facebook.com/ s/.*/$facebook_ip facebook.com/" /etc/hosts
