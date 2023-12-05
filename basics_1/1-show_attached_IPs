@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Get the list of active IPv4 addresses
+ip_addresses=$(ifconfig | awk '/inet / {print $2}')
+echo "$ip_addresses"
