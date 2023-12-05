@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-# Add or update entries to the hosts file
-
-# Change localhost resolution to both IPv4 and IPv6
-sed -i -e 's/\b127.0.0.1\b/127.0.0.2/' /etc/hosts
-
-# Add a new entry for facebook.com
-echo "8.8.8.8 facebook.com" >> /etc/hosts
+# Add a new entries to the hosts file
+sudo echo "127.0.0.1 localhost" >> /etc/hosts
+sudo echo "8.8.8.8 facebook.com" >> /etc/hosts
