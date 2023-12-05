@@ -1,10 +1,25 @@
 #!/usr/bin/env bash
-# Add entries to the hosts file
+# Add or update entries to the hosts file
+
+# Function to update or add entries
+update_hosts() {
+    local hostname="$1"
+    local ip_address="$2"
+
+    # Search the entrie in /etc/hosts
+    if grep -q "$hostname" /etc/hosts; then
+        # The entry exists, update it
+        sudo sed -i "/$hostname/ s/.*/$ip_address $hostname/" /etc/hosts
+    else
+        # Entry doesn't exist, add it
+        echo "$ip_address $hostname" | sudo tee -a /etc/hosts > /dev/null
+    fi
+}
 
 # Set the desired IP addresses for localhost and facebook.com
 localhost_ip="127.0.0.2"
 facebook_ip="8.8.8.8"
 
 # Update /etc/hosts file
-sed -i "/localhost/ s/.*/$localhost_ip localhost/" /etc/hosts
-sed -i "/facebook.com/ s/.*/$facebook_ip facebook.com/" /etc/hosts
+update_hosts "localhost" "$localhost_ip"
+update_hosts "facebook.com" "$facebook_ip"
