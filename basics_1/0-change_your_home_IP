@@ -1,36 +1,9 @@
 #!/usr/bin/env bash
 # Add or update entries to the hosts file
 
-# Function to update or add entries
-update_hosts() {
-    local hostname="$1"
-    local ipv4_address="$2"
-    local ipv6_address="$3"
+# Change localhost resolution to both IPv4 and IPv6
+sed -i 's/127.0.0.1/127.0.0.2/g' /etc/hosts
+sed -i 's/::1/::2/g' /etc/hosts
 
-    # Search the entrie IPv4 in /etc/hosts
-    if grep -q "$hostname" /etc/hosts; then
-        # The entry IPv4 exists, update it
-        sudo sed -i "/$hostname/ s/.*/$ipv4_address $hostname/" /etc/hosts
-    else
-        # Entry IPv4 doesn't exist, add it
-        echo "$ipv4_address $hostname" | sudo tee -a /etc/hosts > /dev/null
-    fi
-
-    # Search the entrie IPv6 in /etc/hosts
-    if grep -q "$hostname" /etc/hosts; then
-        # The entry IPv6 exists, update it
-        sudo sed -i "/$hostname/ s/.*/$ipv6_address $hostname/" /etc/hosts
-    else
-        # Entry IPv6 doesn't exist, add it
-        echo "$ipv6_address $hostname" | sudo tee -a /etc/hosts > /dev/null
-    fi
-}
-
-# Set the desired IP addresses for localhost and facebook.com
-localhost_ipv4="127.0.0.2"
-localhost_ipv6="::1"
-facebook_ip="8.8.8.8"
-
-# Update /etc/hosts file
-update_hosts "localhost" "$localhost_ipv4" "$localhost_ipv4"
-update_hosts "facebook.com" "$facebook_ip" "$facebook_ip"
+# Add a new entry for facebook.com
+bash -c 'echo "8.8.8.8 facebook.com" >> /etc/hosts'
